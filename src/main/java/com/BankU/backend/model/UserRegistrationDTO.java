@@ -1,42 +1,21 @@
 package com.BankU.backend.model;
-
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.time.LocalDate;
-
-@Entity
-@Table(name = "user")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class UserRegistrationDTO {
 
     private String nome;
     private String cognome;
-
-    @Column(unique = true)
     private String email;
-
-    @Column(unique = true)
-    private String codiceFiscale;
-
-    private LocalDate dataNascita;
-    private String genere;
     private String telefono;
+    private String codiceFiscale;
+     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+     private LocalDate dataNascita;
+    private String genere;
     private String password;
 
-    // Costruttore vuoto
-    public User() {}
-
     // Getter e Setter
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getNome() {
         return nome;

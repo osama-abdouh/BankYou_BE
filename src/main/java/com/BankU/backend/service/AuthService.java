@@ -26,7 +26,7 @@ public class AuthService {
     private PasswordEncoder passwordEncoder;
 
     public boolean login(String username, String password) {
-        Optional<User> userOptional = userRepository.findByUsername(username);
+        Optional<User> userOptional = userRepository.findByEmail(username);
         
         if (userOptional.isPresent()) {
             User user = userOptional.get();
